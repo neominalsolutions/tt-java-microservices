@@ -1,0 +1,25 @@
+
+
+
+
+spring:
+  application:
+    name: tt-config-server
+  profiles:
+    active: native # native modül sayesinde git değilde classpath okur.
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/product-service-config
+        bootstrap: true
+server:
+  port: 8085  # config server port
+
+
+
+#spring.application.name=config-server
+#server.port=8085
+#spring.profiles.active=native
+#spring.cloud.config.server.native.search-locations=classpath:/user-service-config/,classpath:/order-service-config/

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tt-eureka-server
+server:
+  port: 8761 # defayult eureka server port
+
+eureka:
+  client:
+    fetch-registry: false # kay?t güncellemesi fetch ile ping atamy? kapat
+    register-with-eureka: false # kendini eureka üzerine kaydetme çünki sen admin
+
+# eureka server default settings
+# Not: bu uygulamada bir login user giri?i ile korunabilir yada Identity Serverdan JWT bazl? token ile login olunabilir.
+# genelde bu tarz web projelerinde form önerilir.

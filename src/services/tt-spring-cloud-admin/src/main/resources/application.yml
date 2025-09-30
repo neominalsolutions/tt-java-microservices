@@ -1,0 +1,21 @@
+
+
+
+spring:
+  application:
+    name: tt-spring-cloud-admin
+  security:
+    user:
+      name: admin
+      password: P@ssword1
+
+server:
+  port: 5050
+
+
+
+
+
+
+
+

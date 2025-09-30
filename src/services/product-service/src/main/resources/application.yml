@@ -1,0 +1,46 @@
+
+
+spring:
+  application:
+    name: product-service
+  cloud:
+    config:
+      uri: http://localhost:8085 # config server uri
+  config:
+    import: optional:configserver:http://localhost:8085
+  profiles:
+    active: dev
+  boot:
+    admin:
+      client:
+        url: http://localhost:5050  # server spring boot admin service port
+        instance:
+          service-url: http://localhost:5010 # client service port -> admin client
+
+        username: admin
+        password: P@ssword1
+
+
+management:
+  endpoint:
+    env:
+      show-values: always # maskeli tutulan client env bilgileri g�ster
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,metrics
+
+
+server:
+  port: 5010
+
+
+  # dev modda her?ey �?kabilir ama prod da sadece health ve baz? log metricler, Bu sayede Admin Client
+  # actuator endpointlerini spring boot admin ile payla??yor.
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+       defaultZone: http://localhost:8761/eureka # kayıt endpoint
