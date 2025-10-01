@@ -10,19 +10,19 @@ spring:
     name: gateway-service
   cloud:
     gateway:
-        routes:
-          - id: product-service  # openFeign ayar?
-            uri: lb://PRODUCT-SERVICE  # Eureka Application Name
-            predicates:
-              - Path= /product-service/api/v1/**
-            filters:
-              - StripPrefix=1
-          - id: order-service
-            uri: lb://ORDER-SERVICE
-            predicates:
-              - Path= /order-service/api/v1/**
-            filters:
-              - StripPrefix=1
+      routes:
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/product-service/api/v1/**
+          filters:
+            - StripPrefix=1
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/api/v1/**
+          filters:
+            - StripPrefix=1
 
 management:
   endpoint:

@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "dc4f7e66-50bc-4dcb-8528-019d293ab97c",
+		"name": "Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40527392",
+		"_collection_link": "https://neominal-solutions2024.postman.co/workspace/ddd-app-sample~b88e2897-08fd-4d47-9a33-88adae69571c/collection/40527392-dc4f7e66-50bc-4dcb-8528-019d293ab97c?action=share&source=collection_link&creator=40527392"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Product Service",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
