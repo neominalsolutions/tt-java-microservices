@@ -7,7 +7,10 @@ import com.mertalptekin.orderservice.application.dto.CreateOrderRequest;
 import com.mertalptekin.orderservice.application.dto.GetOrderedProductRequest;
 import com.mertalptekin.orderservice.application.dto.OrderedProductReponse;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,17 +37,35 @@ public class OrderController {
 
     // api/v1/orders -> POST isteği
     @PostMapping
-    @CircuitBreaker(name = "productClient",fallbackMethod = "getOrderedProductsCircuitBraker")
+    //@CircuitBreaker(name = "productClient",fallbackMethod = "getOrderedProductsCircuitBraker")
+    // @Retry(name = "productClient",fallbackMethod = "getOrderedProductsRetry")
+    @RateLimiter(name = "productClient",fallbackMethod = "getOrderedProductsRatelimiter")
     public  ResponseEntity<OrderedProductReponse> getOrderedProducts(@RequestBody GetOrderedProductRequest request){
         System.out.println("Order Servis");
        return productClient.getOrderedProducts(request);
     }
 
-    public ResponseEntity<OrderedProductReponse> getOrderedProductsCircuitBraker(Exception ex)  {
+    public ResponseEntity<String> getOrderedProductsRatelimiter(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
+        // logger
+        System.out.println("rate-limitter");
+        // hata dışında eğer veri cachledeye response son güncel cache üzerinden döner.
+        return new ResponseEntity<>("429 Status Code", HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
+
+    };
+
+    public ResponseEntity<String> getOrderedProductsRetry(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
+        // logger
+        System.out.println("retry");
+        // hata dışında eğer veri cachledeye response son güncel cache üzerinden döner.
+        return ResponseEntity.badRequest().body("Product Client Down");
+
+    };
+
+    public ResponseEntity<String> getOrderedProductsCircuitBraker(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
         // logger
         System.out.println("getOrderedProductsCircuitBrakerFallback");
         // hata dışında eğer veri cachledeye response son güncel cache üzerinden döner.
-        return ResponseEntity.ok(new OrderedProductReponse(List.of()));
+        return ResponseEntity.badRequest().body("Product Client erişim hatası");
 
     };
 
