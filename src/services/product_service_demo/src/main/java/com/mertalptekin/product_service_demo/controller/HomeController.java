@@ -1,4 +1,4 @@
-package com.mertalptekin.productservice.controller;
+package com.mertalptekin.product_service_demo.controller;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1")
 public class HomeController {
 
-    @Value("${serviceName}")
-    private String serviceName;
 
 
 
@@ -19,7 +17,7 @@ public class HomeController {
 
     @GetMapping
     public String info() {
-        return " name: " + serviceName;
+        return " Product Service: ";
     }
 
 

@@ -1,6 +1,7 @@
-package com.mertalptekin.productservice.application.dto;
+package com.mertalptekin.product_service_demo.application.dto;
 
-import com.mertalptekin.productservice.service.model.Product;
+
+import com.mertalptekin.product_service_demo.service.model.Product;
 
 import java.util.List;
 // order servisine göndereceğimiz ürünlerin listesi

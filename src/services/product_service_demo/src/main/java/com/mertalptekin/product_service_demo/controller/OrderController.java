@@ -1,11 +1,12 @@
-package com.mertalptekin.productservice.controller;
+package com.mertalptekin.product_service_demo.controller;
 
 
 // Siparişe düşen ürünleri yönettiğimiz contoller
 
-import com.mertalptekin.productservice.application.dto.GetOrderedProductRequest;
-import com.mertalptekin.productservice.application.dto.OrderProductResponse;
-import com.mertalptekin.productservice.service.model.Product;
+
+import com.mertalptekin.product_service_demo.application.dto.GetOrderedProductRequest;
+import com.mertalptekin.product_service_demo.application.dto.OrderProductResponse;
+import com.mertalptekin.product_service_demo.service.model.Product;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,8 @@ public class OrderController {
             System.out.println(request.OrderId());
             System.out.println(request.ProductIds());
 
-            List<Product> plist = List.of(new Product("1","P-1", BigDecimal.valueOf(10.5),20),new Product("2","P-2"
+            List<Product> plist = List.of(
+                    new Product("1","P-1", BigDecimal.valueOf(10.5),20),new Product("2","P-2"
                     ,BigDecimal.valueOf(30),40));
 
             return   ResponseEntity.ok(new OrderProductResponse(plist));

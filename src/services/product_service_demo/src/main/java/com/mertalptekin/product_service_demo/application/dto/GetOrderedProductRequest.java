@@ -1,4 +1,4 @@
-package com.mertalptekin.productservice.application.dto;
+package com.mertalptekin.product_service_demo.application.dto;
 
 import java.util.List;
 
