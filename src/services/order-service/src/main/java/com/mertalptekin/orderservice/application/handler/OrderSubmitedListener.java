@@ -3,7 +3,6 @@ package com.mertalptekin.orderservice.application.handler;
 
 import com.mertalptekin.orderservice.application.event.OrderSummited;
 import com.mertalptekin.orderservice.respository.ProductRepository;
-import com.mertalptekin.orderservice.service.entity.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
@@ -30,18 +29,25 @@ public class OrderSubmitedListener {
     public void orderSubmitted(OrderSummited event) throws InterruptedException {
         // buradaki logic devam eder.
         // artık order submit olduktan sonraki süreç
-        System.out.println("Order submitted");
+//        System.out.println("Order submitted");
+//
+//        // kodu simüle ettiğimiz kısım
+//        Optional<Product> p = this.productRepository.findById(1);
+//
+//        if(p.isEmpty()){
+//            throw new RuntimeException("Product not found");
+//        } else {
+//           Product entity =  p.get();
+//           entity.setStock(entity.getStock() - 5); // 5 adet sipariş verilen üründen düş. // event.quantity()
+//            productRepository.save(entity);
+//
+//
+//        }
 
-        // kodu simüle ettiğimiz kısım
-        Optional<Product> p = this.productRepository.findById(1);
 
-        if(p.isEmpty()){
-            throw new RuntimeException("Product not found");
-        } else {
-           Product entity =  p.get();
-           entity.setStock(entity.getStock() - 5); // 5 adet sipariş verilen üründen düş. // event.quantity()
-            productRepository.save(entity);
-        }
+
+
+
 
         // Not: Eğer transaction Rollback olursa ne order oluşucak nede product güncellenecek.
         // Not: Microservices olarak Product ile Order Service ayrıldığında sadece EventListener kodunu güncellemek yeterli olucak.
