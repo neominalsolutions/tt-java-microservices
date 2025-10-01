@@ -37,15 +37,15 @@ public class OrderController {
 
     // api/v1/orders -> POST isteği
     @PostMapping
-    //@CircuitBreaker(name = "productClient",fallbackMethod = "getOrderedProductsCircuitBraker")
-    // @Retry(name = "productClient",fallbackMethod = "getOrderedProductsRetry")
-    @RateLimiter(name = "productClient",fallbackMethod = "getOrderedProductsRatelimiter")
+    //@CircuitBreaker(name = "productClient",fallbackMethod = "circuitBraker")
+    @Retry(name = "productClient",fallbackMethod = "retry")
+    //@RateLimiter(name = "productClient",fallbackMethod = "ratelimiter")
     public  ResponseEntity<OrderedProductReponse> getOrderedProducts(@RequestBody GetOrderedProductRequest request){
         System.out.println("Order Servis");
        return productClient.getOrderedProducts(request);
     }
 
-    public ResponseEntity<String> getOrderedProductsRatelimiter(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
+    public ResponseEntity<String> ratelimiter(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
         // logger
         System.out.println("rate-limitter");
         // hata dışında eğer veri cachledeye response son güncel cache üzerinden döner.
@@ -53,7 +53,7 @@ public class OrderController {
 
     };
 
-    public ResponseEntity<String> getOrderedProductsRetry(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
+    public ResponseEntity<String> retry(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
         // logger
         System.out.println("retry");
         // hata dışında eğer veri cachledeye response son güncel cache üzerinden döner.
@@ -61,9 +61,9 @@ public class OrderController {
 
     };
 
-    public ResponseEntity<String> getOrderedProductsCircuitBraker(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
+    public ResponseEntity<String> circuitBraker(@RequestBody  GetOrderedProductRequest request,Throwable t)  {
         // logger
-        System.out.println("getOrderedProductsCircuitBrakerFallback");
+        System.out.println("circuitBraker");
         // hata dışında eğer veri cachledeye response son güncel cache üzerinden döner.
         return ResponseEntity.badRequest().body("Product Client erişim hatası");
 
