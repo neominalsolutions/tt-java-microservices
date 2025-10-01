@@ -20,13 +20,15 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<OrderProductResponse> getOrderedProducts(@RequestBody GetOrderedProductRequest request) {
 
-        System.out.println(request.OrderId());
-        System.out.println(request.ProductIds());
+        throw  new RuntimeException("Hatalı istek");
 
-        List<Product> plist = List.of(new Product("1","P-1", BigDecimal.valueOf(10.5),20),new Product("2","P-2"
-        ,BigDecimal.valueOf(30),40));
-
-      return   ResponseEntity.ok(new OrderProductResponse(plist));
+//        System.out.println(request.OrderId());
+//        System.out.println(request.ProductIds());
+//
+//        List<Product> plist = List.of(new Product("1","P-1", BigDecimal.valueOf(10.5),20),new Product("2","P-2"
+//        ,BigDecimal.valueOf(30),40));
+//
+//      return   ResponseEntity.ok(new OrderProductResponse(plist));
 
     }
 
