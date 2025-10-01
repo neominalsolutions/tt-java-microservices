@@ -1,0 +1,47 @@
+
+server:
+  port: 5015
+
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+        routes:
+          - id: product-service  # openFeign ayar?
+            uri: lb://PRODUCT-SERVICE  # Eureka Application Name
+            predicates:
+              - Path= /product-service/api/v1/**
+            filters:
+              - StripPrefix=1
+          - id: order-service
+            uri: lb://ORDER-SERVICE
+            predicates:
+              - Path= /order-service/api/v1/**
+            filters:
+              - StripPrefix=1
+
+management:
+  endpoint:
+    env:
+      show-values: always # maskeli tutulan client env bilgileri g?ster
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,metrics
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka # kay?t endpoint
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
