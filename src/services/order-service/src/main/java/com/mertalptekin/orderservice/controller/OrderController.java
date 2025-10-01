@@ -6,17 +6,11 @@ import com.mertalptekin.orderservice.application.client.ProductClient;
 import com.mertalptekin.orderservice.application.dto.CreateOrderRequest;
 import com.mertalptekin.orderservice.application.dto.GetOrderedProductRequest;
 import com.mertalptekin.orderservice.application.dto.OrderedProductReponse;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
 
 @RestController
 @RequestMapping("api/v1/orders")
@@ -26,14 +20,10 @@ public class OrderController {
     private final CreateOrderHandler createOrderHandler;
     private final ProductClient productClient;
 
-
-
     @GetMapping
     private String Index(){
         return  "Order Service";
     }
-
-
 
     @PostMapping("submit")
     public ResponseEntity submitOrder(@RequestBody CreateOrderRequest request) {
@@ -77,7 +67,6 @@ public class OrderController {
     };
 
     // herhangi bir hata durumunda productService erişemezsek o zaman response olarak ne göstereceğiz?
-
     // Bunu test etmek için 1-Eureka Server çalışmalı, 2-OrderService, 3-ProductService
     // Product Service Config ayarlar içinde mecbur Config Serverda açık olmalı. Run
 

@@ -1,4 +1,4 @@
-package com.mertalptekin.orderservice.respository;
+package com.mertalptekin.orderservice.repository;
 
 
 import com.mertalptekin.orderservice.service.entity.Product;

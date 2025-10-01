@@ -2,12 +2,10 @@ package com.mertalptekin.orderservice.application.handler;
 
 
 import com.mertalptekin.orderservice.application.event.OrderSummited;
-import com.mertalptekin.orderservice.respository.ProductRepository;
+import com.mertalptekin.orderservice.repository.ProductRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
-
-import java.util.Optional;
 
 @Component
 public class OrderSubmitedListener {

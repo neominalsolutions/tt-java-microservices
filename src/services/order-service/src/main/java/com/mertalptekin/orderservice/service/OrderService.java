@@ -2,7 +2,7 @@ package com.mertalptekin.orderservice.service;
 
 import com.mertalptekin.orderservice.application.event.OrderSummited;
 import com.mertalptekin.orderservice.service.entity.Order;
-import com.mertalptekin.orderservice.respository.OrderRepository;
+import com.mertalptekin.orderservice.repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
