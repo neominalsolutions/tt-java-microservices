@@ -1,4 +1,5 @@
 package com.mertalptekin.orderservice.application.dto;
 
-public class OrderedProductReponse {
-}
+import java.util.List;
+
+public record OrderedProductReponse(List<ProductDto> products) {}
