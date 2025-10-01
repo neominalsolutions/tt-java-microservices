@@ -8,7 +8,6 @@ import com.mertalptekin.productservice.application.dto.OrderProductResponse;
 import com.mertalptekin.productservice.service.model.Product;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -30,6 +29,5 @@ public class OrderController {
       return   ResponseEntity.ok(new OrderProductResponse(plist));
 
     }
-
 
 }
