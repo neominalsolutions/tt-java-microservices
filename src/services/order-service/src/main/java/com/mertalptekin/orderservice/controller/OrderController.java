@@ -32,6 +32,7 @@ public class OrderController {
     // api/v1/orders -> POST isteği
     @PostMapping
     public  ResponseEntity<OrderedProductReponse> getOrderedProducts(@RequestBody GetOrderedProductRequest request){
+        System.out.println("Order Servis");
        return productClient.getOrderedProducts(request);
     }
 
