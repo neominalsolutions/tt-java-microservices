@@ -24,7 +24,12 @@ spring:
           filters:
             - StripPrefix=1
 
-management:
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/java-microservices
   endpoint:
     env:
       show-values: always # maskeli tutulan client env bilgileri g?ster
@@ -40,6 +45,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka # kay?t endpoint
+
 
 
 logging:
