@@ -35,17 +35,17 @@ public class OrderServiceApplication {
         };
     }
 
-    @Bean
-    public Consumer<Message<String>> sample01() {
-        return message -> {
-
-            System.out.println("message 01:" + message.getPayload());
-        };
-    }
+//    @Bean
+//    public Consumer<Message<String>> sample01() {
+//        return message -> {
+//
+//            System.out.println("message 01:" + message.getPayload());
+//        };
+//    }
 
     // Not: genelde @Scheduled birlikte cron bazlı kullanırız.
 
-    // @Bean
+    @Bean
     public Consumer<Message<String>> sample_error() {
         return message -> {
             System.out.println("Dql Error Message:" + message.getPayload());

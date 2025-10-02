@@ -6,6 +6,8 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class SampleProducer {
 
@@ -16,7 +18,11 @@ public class SampleProducer {
     }
 
     public  void  publish(String payload){
-        Message<String> message = MessageBuilder.withPayload(payload).build();
+
+        String key = payload.contains("fail") ? "1":"2";
+
+        // payload göre key oluşturma
+        Message<String> message = MessageBuilder.withPayload(payload).setHeader("correlationId", key).build();
         this.streamBridge.send("sample-out-0",message);
     }
 
