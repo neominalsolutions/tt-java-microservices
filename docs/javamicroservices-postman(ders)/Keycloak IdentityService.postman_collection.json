@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "2c99528e-4523-4f66-8471-1ac976c186d9",
+		"name": "Keycloak IdentityService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40527392",
+		"_collection_link": "https://neominal-solutions2024.postman.co/workspace/ddd-app-sample~b88e2897-08fd-4d47-9a33-88adae69571c/collection/40527392-2c99528e-4523-4f66-8471-1ac976c186d9?action=share&source=collection_link&creator=40527392"
+	},
+	"item": [
+		{
+			"name": "Client Credentials",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "gateway-service",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "gbA7ynvACbfcvvmNR6MxgbjSjHTpwghh",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8180/realms/java-microservices/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"realms",
+						"java-microservices",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resource Owner",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "gateway-service",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ahmet",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssword1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8180/realms/java-microservices/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"realms",
+						"java-microservices",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

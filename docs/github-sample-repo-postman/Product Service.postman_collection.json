@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "3fbed14a-6ca1-4029-8413-5ed5309c033a",
+		"name": "Product Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40527392",
+		"_collection_link": "https://neominal-solutions2024.postman.co/workspace/Spring-Microservices~c6ba8fcb-8c6f-40e9-93b7-2c67649e17dc/collection/40527392-3fbed14a-6ca1-4029-8413-5ed5309c033a?action=share&source=collection_link&creator=40527392"
+	},
+	"item": [
+		{
+			"name": "test-distributed-tracing-with-zipkin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"id\":{{$randomInt}}, \"name\":\"{{$randomProductName}}\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5003/api/v1/orders/test-distributed-tracing",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"test-distributed-tracing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test-bulkhead",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"orderId\":1,\"code\":\"EL-2509-00457\",\"quantity\":5}"
+				},
+				"url": {
+					"raw": "localhost:5003/api/v1/orders/test-bulkhead",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"test-bulkhead"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test-timelimiter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5003/api/v1/orders/test-timelimiter",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"test-timelimiter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test-distributed-tracing-with-zipkin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"orderId\":1,\"code\":\"EL-2509-00457\",\"quantity\":5}"
+				},
+				"url": {
+					"raw": "localhost:5003/api/v1/orders/test-distributed-tracing",
+					"host": [
+						"localhost"
+					],
+					"port": "5003",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"test-distributed-tracing"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

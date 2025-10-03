@@ -8,6 +8,9 @@ import com.mertalptekin.orderservice.application.dto.GetOrderedProductRequest;
 import com.mertalptekin.orderservice.application.dto.OrderedProductReponse;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +23,17 @@ public class OrderController {
     private final CreateOrderHandler createOrderHandler;
     private final ProductClient productClient;
 
+    private final static  Logger logger = LoggerFactory.getLogger(OrderController.class);
+
     @GetMapping
     private String Index(){
+
+        // Logstash enrichment -> Loglara ekstra bilgi ekleme
+        MDC.put("orderId", "1");
+        MDC.put("request", "10");
+        logger.info("Index metodu çağrıldı {} -> {} ","çağrı 1","çağrı 2"); // message payload
+        MDC.clear();
+
         return  "Order Service";
     }
 

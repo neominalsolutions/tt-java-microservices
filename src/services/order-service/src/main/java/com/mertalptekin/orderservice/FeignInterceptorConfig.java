@@ -14,11 +14,13 @@ public class FeignInterceptorConfig {
     public RequestInterceptor requestInterceptor(Tracer tracer) {
         return requestTemplate -> {
 
+            System.out.println("Order Service requestInterceptor");
+
             // b3 header'ını traceId ve spanId ile dolduruyoruz
             // b3 özel bir tracing değeridir.
             var currentSpan = tracer.currentSpan(); // mevcut span'ı alıyoruz
             if(currentSpan != null) {
-                requestTemplate.header("b3", currentSpan.context().spanId());
+                requestTemplate.header("b3", currentSpan.context().spanId(), currentSpan.context().traceId());
             }
 
 

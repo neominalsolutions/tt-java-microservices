@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "e7cfde5a-8221-4e1b-b03a-3c34a90f15cc",
+		"name": "Order Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40527392",
+		"_collection_link": "https://neominal-solutions2024.postman.co/workspace/ddd-app-sample~b88e2897-08fd-4d47-9a33-88adae69571c/collection/40527392-e7cfde5a-8221-4e1b-b03a-3c34a90f15cc?action=share&source=collection_link&creator=40527392"
+	},
+	"item": [
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5015/order-service/api/v1/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "5015",
+					"path": [
+						"order-service",
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
